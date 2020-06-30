@@ -8,7 +8,7 @@ import java.util.List;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
-import br.com.locadora.caros.model.Cliente;
+import br.com.locadora.carros.model.Cliente;
 
 public class ClienteDAO {
 	
@@ -130,13 +130,44 @@ public class ClienteDAO {
 				clienteRetorno.setTelefone(resultSet.getString(6));
 			}
 			
-			this.conexao.commit();
+			//this.conexao.commit();
 		}catch (SQLException ex) {
 			this.conexao.rollback();
 			throw ex;
 		}
 		
 		return clienteRetorno;
+	}
+	
+	public List<Cliente> getClientesByNameLike(String nome) throws SQLException {
+		String sqlQuery = "SELECT id, nome, sobrenome, rg, cpf, telefone FROM Cliente WHERE nome Like ?";
+		//Cliente clienteRetorno = new Cliente();
+		List<Cliente> listaClientes = new ArrayList<Cliente>();
+		
+		try {
+			PreparedStatement prepStatement = (PreparedStatement) this.conexao.getConnection().prepareStatement(sqlQuery);
+			prepStatement.setString(1, nome+'%');
+			ResultSet resultSet = prepStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				Cliente cliente = new Cliente();
+				cliente.setId((long) resultSet.getInt(1));
+				cliente.setNome(resultSet.getString(2));
+				cliente.setSobrenome(resultSet.getString(3));
+				cliente.setRg(resultSet.getString(4));
+				cliente.setCpf(resultSet.getString(5));
+				cliente.setTelefone(resultSet.getString(6));
+				
+				listaClientes.add(cliente);
+			}
+			
+			//this.conexao.commit();
+		}catch (SQLException ex) {
+			this.conexao.rollback();
+			throw ex;
+		}
+		
+		return listaClientes;
 	}
 	
 }

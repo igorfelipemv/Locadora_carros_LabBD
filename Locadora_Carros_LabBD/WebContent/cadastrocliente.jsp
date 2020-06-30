@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:url value="/novocliente" var="linkNovoCliente" />
+	<c:url value="/novocliente" var="linkNovoCliente" />
+	<c:url value="/buscacliente" var="linkBuscaCliente" />
+	<c:url value="/rodarprocedure" var="linkRodarProcedure" />
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,10 +40,37 @@
 		</div>
 		
 		<div class="form-inline">
-				<button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
+			<button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
 		</div>
 	</form>
 	
+	<form action="${linkBuscaCliente}" method="get">
+		<div align="center">
+			<label>Nome</label> <input type="text" name="nome">
+		</div>
+		
+		<div align="center">
+			<button type="submit" class="btn btn-primary mb-2">Buscar</button>
+		</div>
+		
+		<div align="center">
+			<label>${mensagem_de_retorno}</label>
+		</div>
+	</form>
+	
+	<form action="${linkRodarProcedure}" method="post">
+		<div align="left">
+			<label>Nome</label> <input type="text" name="nome">
+		</div>
+		
+		<div align="left">
+			<button type="submit" class="btn btn-primary mb-2">Trocar Nomes</button>
+		</div>
+	</form>
+	
+	<div align="left">
+		<label>${msg_retorno}</label>
+	</div>
 	<table style="margin-top: 20px" class="table">
 		<thead class="thead-light">
 			<tr>
@@ -50,6 +80,8 @@
 				<th scope="col">RG</th>
 				<th scope="col">CPF</th>
 				<th scope="col">Telefone</th>
+				<th scope="col"></th>
+				<th scope="col"></th>
 			</tr>
 		</thead>
 		

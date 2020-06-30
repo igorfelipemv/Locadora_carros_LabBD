@@ -1,4 +1,4 @@
-package br.com.locadora.caros.model;
+package br.com.locadora.carros.model;
 
 public class Veiculo {
 	private Long id;

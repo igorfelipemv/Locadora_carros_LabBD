@@ -2,7 +2,7 @@ package br.com.locadora.carros.controller.automovel;
 
 import java.sql.SQLException;
 
-import br.com.locadora.caros.model.Cliente;
+import br.com.locadora.carros.model.Cliente;
 import br.com.locadora.carros.persistence.ClienteDAO;
 
 public class Teste {

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.locadora.caros.model.Cliente;
+import br.com.locadora.carros.model.Cliente;
 import br.com.locadora.carros.persistence.ClienteDAO;
 
 @WebServlet("/mostracliente")

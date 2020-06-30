@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.locadora.caros.model.Cliente;
+import br.com.locadora.carros.model.Cliente;
 import br.com.locadora.carros.persistence.ClienteDAO;
 
 @WebServlet("/alteracliente")
@@ -25,12 +25,6 @@ public class AlteraClienteServlet extends HttpServlet{
 		String rg = request.getParameter("rg");
 		String cpf = request.getParameter("cpf");
 		String telefone = request.getParameter("telefone");
-		
-		System.out.println("ta vindo nome: "+nome);
-		System.out.println("ta vindo sobrenome: "+sobrenome);
-		System.out.println("ta vindo rg: "+rg);
-		System.out.println("ta vindo cpf: "+cpf);
-		System.out.println("ta vindo telefone: "+telefone);
 		
 		Cliente cliente = new Cliente();
 		cliente.setId(id);
